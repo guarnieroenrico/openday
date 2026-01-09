@@ -54,9 +54,16 @@
             gap: 10px;
         }
 
-        .logo-scuola-nav { height: clamp(40px, 8vw, 55px); width: auto; }
+        .logo-scuola-nav {
+            height: clamp(40px, 8vw, 55px);
+            width: auto;
+        }
 
-        .social-links { display: flex; gap: 10px; }
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
         .social-links a {
             color: white;
             text-decoration: none;
@@ -95,11 +102,25 @@
             z-index: 2;
         }
 
-        .isiss-container span:nth-child(1) { color: var(--isiss-i); }
-        .isiss-container span:nth-child(2) { color: var(--isiss-s1); }
-        .isiss-container span:nth-child(3) { color: var(--isiss-i2); }
-        .isiss-container span:nth-child(4) { color: var(--isiss-s2); }
-        .isiss-container span:nth-child(5) { color: var(--isiss-s3); }
+        .isiss-container span:nth-child(1) {
+            color: var(--isiss-i);
+        }
+
+        .isiss-container span:nth-child(2) {
+            color: var(--isiss-s1);
+        }
+
+        .isiss-container span:nth-child(3) {
+            color: var(--isiss-i2);
+        }
+
+        .isiss-container span:nth-child(4) {
+            color: var(--isiss-s2);
+        }
+
+        .isiss-container span:nth-child(5) {
+            color: var(--isiss-s3);
+        }
 
         .location {
             font-size: clamp(0.9rem, 4.5vw, 1.8rem);
@@ -114,13 +135,30 @@
         .header-tech-logo {
             position: absolute;
             height: auto;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
             z-index: 1;
         }
 
-        .h-blender { width: clamp(120px, 18vw, 180px); left: -8%; top: -50px; transform: rotate(-15deg); }
-        .h-openbrush { width: clamp(120px, 18vw, 180px); right: -8%; top: 10px; transform: rotate(20deg); }
-        .h-meta { width: clamp(160px, 25vw, 260px); left: 50%; margin-left: -130px; bottom: -180px; }
+        .h-blender {
+            width: clamp(120px, 18vw, 180px);
+            left: -8%;
+            top: -50px;
+            transform: rotate(-15deg);
+        }
+
+        .h-openbrush {
+            width: clamp(120px, 18vw, 180px);
+            right: -8%;
+            top: 10px;
+            transform: rotate(20deg);
+        }
+
+        .h-meta {
+            width: clamp(160px, 25vw, 260px);
+            left: 50%;
+            margin-left: -130px;
+            bottom: -180px;
+        }
 
         .glass-card {
             background: var(--glass-bg);
@@ -133,6 +171,7 @@
             max-width: 900px;
             margin-bottom: 60px;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         model-viewer {
@@ -155,32 +194,52 @@
             border: 1px solid var(--glass-border);
         }
 
-        .single-video-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* Rapporto 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
         }
 
-        video {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 600px;
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
+            height: 100%;
+            border: 0;
         }
 
         .section-title {
-            text-transform: uppercase; 
-            letter-spacing: 5px; 
-            margin-bottom: 30px; 
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
             font-weight: 400;
             text-align: center;
         }
 
         @media (max-width: 900px) {
-            .h-blender { left: 0; top: -80px; }
-            .h-openbrush { right: 0; top: -70px; }
-            .h-meta { bottom: -140px; margin-left: -75px; width: 150px; }
-            .image-grid { grid-template-columns: 1fr; }
+            .h-blender {
+                left: 0;
+                top: -80px;
+            }
+
+            .h-openbrush {
+                right: 0;
+                top: -70px;
+            }
+
+            .h-meta {
+                bottom: -140px;
+                margin-left: -75px;
+                width: 150px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -197,16 +256,16 @@
     </nav>
 
     <div class="container">
-        
+
         <div class="main-brand-header">
             <img src="Blender-Logo.png" alt="Blender" class="header-tech-logo h-blender">
             <img src="logo-openbrush.png" alt="Open Brush" class="header-tech-logo h-openbrush">
-            
+
             <div class="isiss-container">
                 <span>I</span><span>S</span><span>I</span><span>S</span><span>S</span>
             </div>
             <span class="location">Piedimonte Matese</span>
-            
+
             <img src="meta_quest-logo.png" alt="Meta Quest" class="header-tech-logo h-meta">
         </div>
 
@@ -231,11 +290,13 @@
         <div style="width: 100%; max-width: 900px;">
             <h2 class="section-title">Video Showcase</h2>
             <div class="glass-card">
-                <div class="single-video-container">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://drive.google.com/uc?export=download&id=1A08jFkdHykwmsYHnCDLwyPLSsQAqaGXx" type="video/mp4">
-                        Il tuo browser non supporta i video.
-                    </video>
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/NkWnk_nGpvM?autoplay=1&mute=1&loop=1&playlist=NkWnk_nGpvM&controls=1&rel=0"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
