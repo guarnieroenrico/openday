@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Open Day Blender | ISISS Piedimonte Matese</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@900&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
+    <style>
+        :root {
+            /* Palette lettere ISISS */
+            --isiss-i: #e63946;
+            --isiss-s1: #ffcc00;
+            --isiss-i2: #0077b6;
+            --isiss-s2: #2a9d8f;
+            --isiss-s3: #f4a261;
+
+            /* Colori Sfondo e UI */
+            --bg-top: #2c3e50;
+            --bg-bottom: #4ca1af;
+            --primary-blue: #00d4ff;
+            --glass-bg: rgba(0, 0, 0, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* NAVBAR CENTRATA */
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10px;
+            background: rgba(44, 62, 80, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            gap: 10px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            height: clamp(40px, 8vw, 55px);
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+            letter-spacing: 1px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 15px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--bg-top);
+        }
+
+        /* CONTAINER */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 180px 15px 40px 15px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .school-title {
+            text-align: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .isiss-container {
+            font-family: 'Kanit', sans-serif;
+            font-size: clamp(2.5rem, 15vw, 6rem);
+            line-height: 0.85;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .isiss-container span:nth-child(1) {
+            color: var(--isiss-i);
+        }
+
+        .isiss-container span:nth-child(2) {
+            color: var(--isiss-s1);
+        }
+
+        .isiss-container span:nth-child(3) {
+            color: var(--isiss-i2);
+        }
+
+        .isiss-container span:nth-child(4) {
+            color: var(--isiss-s2);
+        }
+
+        .isiss-container span:nth-child(5) {
+            color: var(--isiss-s3);
+        }
+
+        .location {
+            font-size: clamp(0.8rem, 4vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: clamp(2px, 1vw, 6px);
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+            display: block;
+        }
+
+        .subtitle {
+            color: var(--primary-blue);
+            margin: 20px 0 40px 0;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            letter-spacing: 2px;
+            border: 1px solid var(--primary-blue);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* CARD VETRO */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: clamp(20px, 5vw, 40px);
+            padding: clamp(10px, 3vw, 20px);
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            margin-bottom: 50px;
+            box-sizing: border-box;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: clamp(300px, 60vh, 500px);
+            border-radius: clamp(15px, 4vw, 25px);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 80%);
+        }
+
+        /* SEZIONE FOTO BLENDER */
+        .work-in-progress {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .work-in-progress img {
+            width: 100%;
+            height: auto;
+            border-radius: clamp(15px, 4vw, 25px);
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 0.8rem;
+            margin-top: 15px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        footer {
+            padding: 40px 10px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        /* FIX MOBILE */
+        @media (max-width: 480px) {
+            .container {
+                padding-top: 150px;
+            }
+
+            nav {
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="logo-isiss.png" alt="Logo ISISS" class="logo">
+        <div class="social-links">
+            <a href="https://www.instagram.com/isiss.matese/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.youtube.com/@isisspiedimontematese" target="_blank">YOUTUBE</a>
+            <a href="https://www.isissmatese.edu.it/" target="_blank">SITO WEB</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="school-title">
+            <div class="isiss-container">
+                <span>I</span><span>S</span><span>I</span><span>S</span><span>S</span>
+            </div>
+            <span class="location">Piedimonte Matese</span>
+        </div>
+
+        <p class="subtitle">3D BLENDER SHOWCASE</p>
+
+        <div class="glass-card">
+            <model-viewer src="medieval_church.glb" ar camera-controls auto-rotate shadow-intensity="1.5" exposure="1.1"
+                environment-image="neutral">
+            </model-viewer>
+        </div>
+
+        <div class="work-in-progress">
+            <h2 class="section-title">Build on Blender</h2>
+            <div class="glass-card">
+                <img src="blender1.png" alt="Work in progress in Blender">
+                <br>
+                <img src="blender2.png" alt="Work in progress in Blender">
+                <br>
+                <img src="shade.png" alt="Work in progress in Blender">
+                <br>
+                <img src="blender4.png" alt="Work in progress in Blender">
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 — • Progetto Open Day ISISS
+        </footer>
+    </div>
+
+</body>
+
+</html>
