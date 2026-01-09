@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Day Blender | ISISS Piedimonte Matese</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    
+    <style>
+        :root {
+            /* Palette lettere ISISS */
+            --isiss-i: #e63946;
+            --isiss-s1: #ffcc00;
+            --isiss-i2: #0077b6;
+            --isiss-s2: #2a9d8f;
+            --isiss-s3: #f4a261;
+            
+            /* Sfondo Azzurro Medio */
+            --bg-top: #2c3e50; 
+            --bg-bottom: #4ca1af;
+            --primary-blue: #00d4ff;
+            --glass-bg: rgba(0, 0, 0, 0.2); /* Vetro scuro per contrasto */
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* Sfondo sfumato azzurro polvere/tecnico */
+            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar centrata */
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            background: rgba(44, 62, 80, 0.8);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            gap: 12px;
+        }
+
+        .logo { height: 55px; width: auto; filter: drop-shadow(0 0 10px rgba(0,0,0,0.2)); }
+
+        .social-links { display: flex; gap: 15px; }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255,255,255,0.1);
+            padding: 8px 22px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--bg-top);
+            transform: scale(1.05);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 200px;
+            min-height: 100vh;
+        }
+
+        .school-title { text-align: center; margin-bottom: 10px; }
+
+        .isiss-container {
+            font-family: 'Kanit', sans-serif;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            line-height: 0.85;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .isiss-container span:nth-child(1) { color: var(--isiss-i); }
+        .isiss-container span:nth-child(2) { color: var(--isiss-s1); }
+        .isiss-container span:nth-child(3) { color: var(--isiss-i2); }
+        .isiss-container span:nth-child(4) { color: var(--isiss-s2); }
+        .isiss-container span:nth-child(5) { color: var(--isiss-s3); }
+
+        .location {
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.9);
+            margin-top: 10px;
+            display: block;
+        }
+
+        .subtitle {
+            color: var(--primary-blue);
+            margin: 30px 0;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border: 1px solid var(--primary-blue);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* CARD VETRO FUMÉ */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 45px;
+            padding: 20px;
+            width: 88%;
+            max-width: 950px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+            margin-bottom: 80px;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 500px;
+            border-radius: 30px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 80%);
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            background: rgba(0,0,0,0.1);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="logo-isiss.png" alt="Logo ISISS" class="logo">
+        <div class="social-links">
+            <a href="https://www.instagram.com/isiss.matese/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.youtube.com/@isisspiedimontematese" target="_blank">FACEBOOK</a>
+             <a href="https://www.isissmatese.edu.it/" target="_blank">SITOWEB</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="school-title">
+            <div class="isiss-container">
+                <span>I</span><span>S</span><span>I</span><span>S</span><span>S</span>
+            </div>
+            <span class="location">Piedimonte Matese</span>
+        </div>
+        
+        <p class="subtitle">3D BLENDER SHOWCASE</p>
+
+        <div class="glass-card">
+            <model-viewer 
+                src="medieval_church.glb" 
+                ar 
+                camera-controls 
+                auto-rotate 
+                shadow-intensity="1.5" 
+                exposure="1.1"
+                environment-image="neutral">
+            </model-viewer>
+        </div>
+
+        <footer>
+            &copy; 2026 — Enrico Guarniero • Open Day ISISS
+        </footer>
+    </div>
+
+</body>
+</html>
